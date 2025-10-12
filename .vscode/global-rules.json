@@ -4,29 +4,19 @@
       "rule": "Think hard, think deep, ULTRATHINK about your task before actually executing your task",
       "enforcement": "pre-task-analysis",
       "description": "Deep analysis mandatory before any task"
-    },
-    "documentation": {
-      "rule": "Always provide links to the documentation that you read that led you to your decisions",
-      "enforcement": "mandatory-links",
-      "description": "Documentation links mandatory to support decisions"
-    },
-    "traceability": {
-      "rule": "Create a README-TASK.md file and update with all decisions and files created",
-      "enforcement": "file-tracking",
-      "description": "Complete traceability of files and decisions"
     }
   },
   "language": {
     "primary": "en-US",
     "requirements": {
       "errorMessages": "English mandatory",
-      "comments": "English preferred", 
+      "comments": "English preferred",
       "documentation": "English mandatory"
     },
     "standardTerms": {
       "user": "user",
       "users": "users",
-      "system": "system", 
+      "system": "system",
       "status": "status",
       "profile": "profile",
       "administrator": "System Administrator"
@@ -44,6 +34,17 @@
       "comments": "English only"
     },
     "validationRules": {
+      "namingConvention": "VR##_ObjectName_Description",
+      "errorMessageSuffix": "[VR##_ObjAbbr]",
+      "sequentialPerObject": true,
+      "objectAbbreviations": {
+        "Opportunity": "Opp",
+        "Account": "Acc",
+        "Contact": "Con",
+        "Lead": "Lea",
+        "Case": "Cas",
+        "Contract": "Ctr"
+      },
       "errorMessages": "English only",
       "descriptions": "English only"
     }
