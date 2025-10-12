@@ -1,0 +1,56 @@
+{
+  "globalRules": {
+    "thinking": {
+      "rule": "Think hard, think deep, ULTRATHINK about your task before actually executing your task",
+      "enforcement": "pre-task-analysis",
+      "description": "Deep analysis mandatory before any task"
+    },
+    "documentation": {
+      "rule": "Always provide links to the documentation that you read that led you to your decisions",
+      "enforcement": "mandatory-links",
+      "description": "Documentation links mandatory to support decisions"
+    },
+    "traceability": {
+      "rule": "Create a README-TASK.md file and update with all decisions and files created",
+      "enforcement": "file-tracking",
+      "description": "Complete traceability of files and decisions"
+    }
+  },
+  "language": {
+    "primary": "en-US",
+    "requirements": {
+      "errorMessages": "English mandatory",
+      "comments": "English preferred", 
+      "documentation": "English mandatory"
+    },
+    "standardTerms": {
+      "user": "user",
+      "users": "users",
+      "system": "system", 
+      "status": "status",
+      "profile": "profile",
+      "administrator": "System Administrator"
+    }
+  },
+  "codeStandards": {
+    "apex": {
+      "comments": "English only",
+      "errorMessages": "English only",
+      "variableNames": "camelCase English"
+    },
+    "lwc": {
+      "labels": "English only",
+      "errorMessages": "English only",
+      "comments": "English only"
+    },
+    "validationRules": {
+      "errorMessages": "English only",
+      "descriptions": "English only"
+    }
+  },
+  "enforcement": {
+    "preCommit": true,
+    "preDeploy": true,
+    "codeReview": true
+  }
+}

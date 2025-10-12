@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Only_SysAdmin_Edit_Closed_Won</fullName>
+    <active>true</active>
+    <description>Only System Administrators can edit opportunities with Closed Won status</description>
+    <errorConditionFormula>AND(
+    ISPICKVAL(StageName, "Closed Won"),
+    NOT($Profile.Name = "System Administrator")
+)</errorConditionFormula>
+    <errorMessage>Only users with System Administrator profile can edit won opportunities.</errorMessage>
+</ValidationRule>
