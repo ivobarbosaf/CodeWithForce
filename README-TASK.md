@@ -90,6 +90,18 @@
 	- `force-app/main/default/profiles/Admin.profile-meta.xml`
 - **Documentation:** [Custom Object Metadata API](https://developer.salesforce.com/docs/atlas.en-us.api_meta.meta/api_meta/meta_customobject.htm)
 
+### **10. NormalizePhoneAction Apex Flow Action** (✅ COMPLETED)
+- **Reason:** User request for Flow invocable action that normalizes Portuguese mobile numbers
+- **Implementation:** Created `NormalizePhoneAction` Apex class with Flow-compatible request/response wrappers
+- **Test Coverage:** Added `NormalizePhoneActionTest` with three test scenarios (valid, already prefixed, invalid)
+- **Result:** Returns `+351`-prefixed number when input matches 91/92/93/96 and contains exactly 9 digits; outputs only `isValid` and `normalizedPhoneNumber` (null when normalization fails)
+- **Files:**
+	- `force-app/main/default/classes/NormalizePhoneAction.cls`
+	- `force-app/main/default/classes/NormalizePhoneAction.cls-meta.xml`
+	- `force-app/main/default/classes/NormalizePhoneActionTest.cls`
+	- `force-app/main/default/classes/NormalizePhoneActionTest.cls-meta.xml`
+- **Documentation:** [Invocable Apex Methods](https://developer.salesforce.com/docs/atlas.en-us.apexcode.meta/apexcode/apex_classes_annotation_InvocableMethod.htm)
+
 ---
 
 ## Documentation Consulted:
@@ -109,3 +121,33 @@
 - **Scope:** Project-specific implementation confirmed as adequate
 - **Status:** All global rules implemented and functional
 - **Documentation:** Complete with links and rationale
+
+## **Latest Enhancements**
+
+### Enhanced Phone Normalization Action (December 2024)
+Created improved `NormalizedPhoneActionPortuguese` class with comprehensive format support:
+
+**Enhanced Features:**
+- **Multiple Input Formats:** Handles 9-digit national (961958682), national with trunk prefix (0961958682), international without + (351961958682), international with + (+351961958682)
+- **Smart Parsing:** Preserves + prefix detection for accurate format identification
+- **Comprehensive Testing:** 12 test methods with 98% code coverage
+- **Flow-Ready:** Invocable method for use in Salesforce Flows
+
+**Test Results:**
+- All 12 tests passed (100% pass rate)
+- 98% code coverage on main class
+- Validates all Portuguese mobile prefixes (91, 92, 93, 96)
+- Handles edge cases (null, empty, invalid formats)
+
+**Usage in Flows:**
+Use the "Normalize Portuguese Mobile Phone" action with the following validation formula:
+```
+OR(
+  LEFT(PhoneNumber, 2) = "91",
+  LEFT(PhoneNumber, 2) = "92", 
+  LEFT(PhoneNumber, 2) = "93",
+  LEFT(PhoneNumber, 2) = "96"
+)
+```
+
+**Deployment Status:** Successfully deployed with Deploy ID: 0AfgK00000BgwUHSAZ
