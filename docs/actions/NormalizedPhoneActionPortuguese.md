@@ -5,6 +5,7 @@ Apex Flow action that validates and normalizes Portuguese mobile phone numbers t
 ## Overview
 - Action label in Flow: "Normalize PT Mobile"
 - Input (Request): `inputPhone` (String)
+ - Input (Request): `phoneNumber` (String)
 - Outputs (Response):
   - `normalizedPhoneNumber` (String) → "+351" + 9 digits when valid; null otherwise
   - `isValid` (Boolean) → true when a valid Portuguese mobile number
@@ -17,6 +18,7 @@ The action accepts the most common user-entered formats and extracts exactly the
 - Country code w/out plus: `351961958682` → removes `351`
 - Country code with plus: `+351961958682` → the `+` is ignored during cleaning
 - Country code with 00: `00351961958682` → removes `00351`
+ - Country code with leading 0 before 351: `0351961958682` → removes `0351`
 - Any separators (space, dash, parentheses) are ignored
 
 ## Validation rules
@@ -30,10 +32,11 @@ The action accepts the most common user-entered formats and extracts exactly the
 - Cleaning: removes any non-digit characters (including `+`, spaces, dashes, parentheses)
 - Extraction logic (in order):
   1. `00351` + 9 digits → return digits after `00351`
-  2. 9 digits → return as-is
-  3. `0` + 9 digits → drop the leading `0`
-  4. `351` + 9 digits → return digits after `351`
-  5. `+351` case is covered by cleaning to digits and step 4 above
+  2. `0351` + 9 digits → return digits after `0351`
+  3. 9 digits → return as-is
+  4. `0` + 9 digits → drop the leading `0`
+  5. `351` + 9 digits → return digits after `351`
+  6. `+351` case is covered by cleaning to digits and step 5 above
 - Any other length/format that cannot yield exactly 9 national digits → invalid
 
 ## Flow usage
@@ -59,7 +62,7 @@ System.debug(out[0].normalizedPhoneNumber); // +351961958682
 
 ## Test coverage
 - Test class: `NormalizedPhoneActionPortugueseTest`
-- Total tests: 13 (including 00351 double-zero format)
+- Total tests: 14 (including 00351 and 0351 formats)
 - Class coverage: 98%
 - Last run (Oct 19, 2025): All tests passed
 
@@ -70,7 +73,7 @@ System.debug(out[0].normalizedPhoneNumber); // +351961958682
 
 ## Changelog
 - 2025-10-19
-  - Input changed to `inputPhone` for clearer Flow label ("Input Phone")
+  - Support for `0351XXXXXXXXX` format
   - Action label shortened to "Normalize PT Mobile"
   - Bug fix: support for `00351XXXXXXXXX` format
   - Documentation added (this file)
