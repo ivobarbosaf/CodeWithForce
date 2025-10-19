@@ -5,6 +5,7 @@ Este projeto está configurado para desenvolvimento Salesforce usando VS Code, S
 ## Configuração da Org
 
 **Org Conectada:**
+
 - Username: `ivobarbosaf663@agentforce.com`
 - Alias: `MyOrg`
 - Instance URL: `https://orgfarm-c713d456af-dev-ed.develop.my.salesforce.com`
@@ -28,6 +29,7 @@ Este projeto está configurado para desenvolvimento Salesforce usando VS Code, S
 ## Comandos Principais
 
 ### Recuperar Metadados da Org
+
 ```bash
 # Recuperar todos os metadados
 sf project retrieve start
@@ -37,6 +39,7 @@ sf project retrieve start --metadata ApexClass:MyClass
 ```
 
 ### Deploy para a Org
+
 ```bash
 # Deploy de todo o projeto
 sf project deploy start
@@ -46,6 +49,7 @@ sf project deploy start --source-dir force-app/main/default/classes/MyClass.cls
 ```
 
 ### Trabalhar com Componentes
+
 ```bash
 # Criar nova Apex Class
 sf apex generate class --name MyNewClass --output-dir force-app/main/default/classes
@@ -55,6 +59,7 @@ sf lightning generate component --name myComponent --type lwc --output-dir force
 ```
 
 ### Executar Testes
+
 ```bash
 # Executar todos os testes
 sf apex run test
