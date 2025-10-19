@@ -90,7 +90,7 @@ public class NormalizedPhoneActionPortugueseTest {
     static void testNormalizePhone_AllValidPrefixes() {
         // Test all valid Portuguese mobile prefixes
         List<String> validPrefixes = new List<String>{'91', '92', '93', '96'};
-        
+
         for (String prefix : validPrefixes) {
             // Arrange
             List<NormalizedPhoneActionPortuguese.Request> requests = new List<NormalizedPhoneActionPortuguese.Request>();
@@ -189,15 +189,15 @@ public class NormalizedPhoneActionPortugueseTest {
     static void testNormalizePhone_MultipleRequests() {
         // Arrange
         List<NormalizedPhoneActionPortuguese.Request> requests = new List<NormalizedPhoneActionPortuguese.Request>();
-        
+
         NormalizedPhoneActionPortuguese.Request request1 = new NormalizedPhoneActionPortuguese.Request();
         request1.phoneNumber = '961958682';
         requests.add(request1);
-        
+
         NormalizedPhoneActionPortuguese.Request request2 = new NormalizedPhoneActionPortuguese.Request();
         request2.phoneNumber = '+351929876543';
         requests.add(request2);
-        
+
         NormalizedPhoneActionPortuguese.Request request3 = new NormalizedPhoneActionPortuguese.Request();
         request3.phoneNumber = 'invalid';
         requests.add(request3);
@@ -207,15 +207,15 @@ public class NormalizedPhoneActionPortugueseTest {
 
         // Assert
         System.assertEquals(3, responses.size(), 'Should return three responses');
-        
+
         // First request - valid national format
         System.assertEquals(true, responses[0].isValid, 'First response should be valid');
         System.assertEquals('+351961958682', responses[0].normalizedPhoneNumber, 'First response should normalize correctly');
-        
+
         // Second request - valid international format
         System.assertEquals(true, responses[1].isValid, 'Second response should be valid');
         System.assertEquals('+351929876543', responses[1].normalizedPhoneNumber, 'Second response should normalize correctly');
-        
+
         // Third request - invalid
         System.assertEquals(false, responses[2].isValid, 'Third response should be invalid');
         System.assertEquals(null, responses[2].normalizedPhoneNumber, 'Third response should not have normalized number');

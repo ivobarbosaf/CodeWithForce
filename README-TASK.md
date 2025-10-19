@@ -144,7 +144,7 @@ Use the "Normalize Portuguese Mobile Phone" action with the following validation
 ```
 OR(
   LEFT(PhoneNumber, 2) = "91",
-  LEFT(PhoneNumber, 2) = "92", 
+  LEFT(PhoneNumber, 2) = "92",
   LEFT(PhoneNumber, 2) = "93",
   LEFT(PhoneNumber, 2) = "96"
 )
