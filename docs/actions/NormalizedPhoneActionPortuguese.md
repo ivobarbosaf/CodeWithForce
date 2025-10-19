@@ -5,7 +5,7 @@ Apex Flow action that validates and normalizes Portuguese mobile phone numbers t
 ## Overview
 - Action label in Flow: "Normalize PT Mobile"
 - Input (Request): `inputPhone` (String)
- - Input (Request): `phoneNumber` (String)
+ - Input (Request): `inputPhone` (String)
 - Outputs (Response):
   - `normalizedPhoneNumber` (String) → "+351" + 9 digits when valid; null otherwise
   - `isValid` (Boolean) → true when a valid Portuguese mobile number

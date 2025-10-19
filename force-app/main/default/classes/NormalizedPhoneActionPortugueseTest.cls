@@ -6,7 +6,7 @@ public class NormalizedPhoneActionPortugueseTest {
         // Arrange
         List<NormalizedPhoneActionPortuguese.Request> requests = new List<NormalizedPhoneActionPortuguese.Request>();
         NormalizedPhoneActionPortuguese.Request request = new NormalizedPhoneActionPortuguese.Request();
-        request.phoneNumber = '961958682';
+  request.inputPhone = '961958682';
         requests.add(request);
 
     // Act
@@ -29,7 +29,7 @@ public class NormalizedPhoneActionPortugueseTest {
         // Arrange
         List<NormalizedPhoneActionPortuguese.Request> requests = new List<NormalizedPhoneActionPortuguese.Request>();
         NormalizedPhoneActionPortuguese.Request request = new NormalizedPhoneActionPortuguese.Request();
-        request.phoneNumber = '0961958682';
+  request.inputPhone = '0961958682';
         requests.add(request);
 
     // Act
@@ -52,7 +52,7 @@ public class NormalizedPhoneActionPortugueseTest {
         // Arrange
         List<NormalizedPhoneActionPortuguese.Request> requests = new List<NormalizedPhoneActionPortuguese.Request>();
         NormalizedPhoneActionPortuguese.Request request = new NormalizedPhoneActionPortuguese.Request();
-        request.phoneNumber = '351961958682';
+  request.inputPhone = '351961958682';
         requests.add(request);
 
     // Act
@@ -75,7 +75,7 @@ public class NormalizedPhoneActionPortugueseTest {
         // Arrange
         List<NormalizedPhoneActionPortuguese.Request> requests = new List<NormalizedPhoneActionPortuguese.Request>();
         NormalizedPhoneActionPortuguese.Request request = new NormalizedPhoneActionPortuguese.Request();
-        request.phoneNumber = '+351961958682';
+  request.inputPhone = '+351961958682';
         requests.add(request);
 
     // Act
@@ -98,7 +98,7 @@ public class NormalizedPhoneActionPortugueseTest {
         // Arrange
         List<NormalizedPhoneActionPortuguese.Request> requests = new List<NormalizedPhoneActionPortuguese.Request>();
         NormalizedPhoneActionPortuguese.Request request = new NormalizedPhoneActionPortuguese.Request();
-        request.phoneNumber = '+351 961 958 682';
+  request.inputPhone = '+351 961 958 682';
         requests.add(request);
 
     // Act
@@ -125,7 +125,7 @@ public class NormalizedPhoneActionPortugueseTest {
             // Arrange
             List<NormalizedPhoneActionPortuguese.Request> requests = new List<NormalizedPhoneActionPortuguese.Request>();
             NormalizedPhoneActionPortuguese.Request request = new NormalizedPhoneActionPortuguese.Request();
-            request.phoneNumber = prefix + '1234567';
+            request.inputPhone = prefix + '1234567';
             requests.add(request);
 
       // Act
@@ -157,7 +157,24 @@ public class NormalizedPhoneActionPortugueseTest {
     // Arrange
     List<NormalizedPhoneActionPortuguese.Request> requests = new List<NormalizedPhoneActionPortuguese.Request>();
     NormalizedPhoneActionPortuguese.Request request = new NormalizedPhoneActionPortuguese.Request();
-    request.phoneNumber = '0351961958682';
+  request.inputPhone = '0351961958682';
+    requests.add(request);
+
+    // Act
+    List<NormalizedPhoneActionPortuguese.Response> responses = NormalizedPhoneActionPortuguese.normalizePhone(requests);
+
+    // Assert
+    System.assertEquals(1, responses.size(), 'Should return one response');
+    System.assertEquals(true, responses[0].isValid, 'Should be valid');
+    System.assertEquals('+351961958682', responses[0].normalizedPhoneNumber, 'Should normalize to +351 format');
+  }
+
+  @IsTest
+  static void testNormalizePhone_ValidInternationalFormatWithDoubleZero() {
+    // Arrange
+    List<NormalizedPhoneActionPortuguese.Request> requests = new List<NormalizedPhoneActionPortuguese.Request>();
+    NormalizedPhoneActionPortuguese.Request request = new NormalizedPhoneActionPortuguese.Request();
+  request.inputPhone = '00351961958682';
     requests.add(request);
 
     // Act
@@ -174,7 +191,7 @@ public class NormalizedPhoneActionPortugueseTest {
         // Arrange
         List<NormalizedPhoneActionPortuguese.Request> requests = new List<NormalizedPhoneActionPortuguese.Request>();
         NormalizedPhoneActionPortuguese.Request request = new NormalizedPhoneActionPortuguese.Request();
-        request.phoneNumber = '981234567'; // Invalid prefix 98
+  request.inputPhone = '981234567'; // Invalid prefix 98
         requests.add(request);
 
     // Act
@@ -197,7 +214,7 @@ public class NormalizedPhoneActionPortugueseTest {
         // Arrange
         List<NormalizedPhoneActionPortuguese.Request> requests = new List<NormalizedPhoneActionPortuguese.Request>();
         NormalizedPhoneActionPortuguese.Request request = new NormalizedPhoneActionPortuguese.Request();
-        request.phoneNumber = '96195868'; // Too short
+  request.inputPhone = '96195868'; // Too short
         requests.add(request);
 
     // Act
@@ -220,7 +237,7 @@ public class NormalizedPhoneActionPortugueseTest {
         // Arrange
         List<NormalizedPhoneActionPortuguese.Request> requests = new List<NormalizedPhoneActionPortuguese.Request>();
         NormalizedPhoneActionPortuguese.Request request = new NormalizedPhoneActionPortuguese.Request();
-        request.phoneNumber = '';
+  request.inputPhone = '';
         requests.add(request);
 
     // Act
@@ -243,7 +260,7 @@ public class NormalizedPhoneActionPortugueseTest {
         // Arrange
         List<NormalizedPhoneActionPortuguese.Request> requests = new List<NormalizedPhoneActionPortuguese.Request>();
         NormalizedPhoneActionPortuguese.Request request = new NormalizedPhoneActionPortuguese.Request();
-        request.phoneNumber = null;
+  request.inputPhone = null;
         requests.add(request);
 
     // Act
@@ -278,15 +295,15 @@ public class NormalizedPhoneActionPortugueseTest {
     List<NormalizedPhoneActionPortuguese.Request> requests = new List<NormalizedPhoneActionPortuguese.Request>();
 
         NormalizedPhoneActionPortuguese.Request request1 = new NormalizedPhoneActionPortuguese.Request();
-        request1.phoneNumber = '961958682';
+  request1.inputPhone = '961958682';
         requests.add(request1);
 
         NormalizedPhoneActionPortuguese.Request request2 = new NormalizedPhoneActionPortuguese.Request();
-        request2.phoneNumber = '+351929876543';
+  request2.inputPhone = '+351929876543';
         requests.add(request2);
 
         NormalizedPhoneActionPortuguese.Request request3 = new NormalizedPhoneActionPortuguese.Request();
-        request3.phoneNumber = 'invalid';
+  request3.inputPhone = 'invalid';
         requests.add(request3);
 
     // Act

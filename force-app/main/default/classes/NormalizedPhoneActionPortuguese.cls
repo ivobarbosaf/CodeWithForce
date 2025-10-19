@@ -4,10 +4,10 @@ public with sharing class NormalizedPhoneActionPortuguese {
     private static final Set<String> PORTUGUESE_MOBILE_PREFIXES = new Set<String>{'91', '92', '93', '96'};
     private static final String COUNTRY_CODE_PREFIX = '+351';
 
-    public class Request {
-        @InvocableVariable(required = true)
-        public String phoneNumber;
-    }
+  public class Request {
+    @InvocableVariable(required = true)
+    public String inputPhone;
+  }
 
     public class Response {
         @InvocableVariable
@@ -17,7 +17,7 @@ public with sharing class NormalizedPhoneActionPortuguese {
     public Boolean isValid;
   }
 
-    @InvocableMethod(label = 'Normalize Portuguese Mobile Phone' description = 'Validates Portuguese mobile numbers and returns the normalized +351 format when applicable')
+  @InvocableMethod(label = 'Normalize PT Mobile' description = 'Validates Portuguese mobile numbers and returns the normalized +351 format when applicable')
     public static List<Response> normalizePhone(List<Request> requests) {
         List<Response> responses = new List<Response>();
 
@@ -35,14 +35,14 @@ public with sharing class NormalizedPhoneActionPortuguese {
     private static Response processRequest(Request request) {
         Response response = new Response();
 
-        if (request == null || String.isBlank(request.phoneNumber)) {
+    if (request == null || String.isBlank(request.inputPhone)) {
             response.isValid = false;
             response.normalizedPhoneNumber = null;
             return response;
         }
 
         // Remove all non-digit characters, but preserve the + sign if present
-        String inputNumber = request.phoneNumber.trim();
+    String inputNumber = request.inputPhone.trim();
         Boolean hasCountryCodePrefix = inputNumber.startsWith('+');
         String cleanedNumber = inputNumber.replaceAll('[^0-9]', '');
 
