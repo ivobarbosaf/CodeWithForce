@@ -152,6 +152,23 @@ public class NormalizedPhoneActionPortugueseTest {
     }
   }
 
+  @IsTest
+  static void testNormalizePhone_ValidInternationalFormatWithLeadingZero351() {
+    // Arrange
+    List<NormalizedPhoneActionPortuguese.Request> requests = new List<NormalizedPhoneActionPortuguese.Request>();
+    NormalizedPhoneActionPortuguese.Request request = new NormalizedPhoneActionPortuguese.Request();
+    request.phoneNumber = '0351961958682';
+    requests.add(request);
+
+    // Act
+    List<NormalizedPhoneActionPortuguese.Response> responses = NormalizedPhoneActionPortuguese.normalizePhone(requests);
+
+    // Assert
+    System.assertEquals(1, responses.size(), 'Should return one response');
+    System.assertEquals(true, responses[0].isValid, 'Should be valid');
+    System.assertEquals('+351961958682', responses[0].normalizedPhoneNumber, 'Should normalize to +351 format');
+  }
+
     @IsTest
     static void testNormalizePhone_InvalidPrefix() {
         // Arrange

@@ -77,9 +77,19 @@ public with sharing class NormalizedPhoneActionPortuguese {
         }
 
         // Case 2: 10 digits starting with 0 (0961958682) - National format with trunk prefix
-        if (cleanedNumber.length() == 10 && cleanedNumber.startsWith('0')) {
-            return cleanedNumber.substring(1); // Remove leading 0
-        }
+      if (cleanedNumber.length() == 10 && cleanedNumber.startsWith('0')) {
+        return cleanedNumber.substring(1); // Remove leading 0
+      }
+
+      // Caso 2b: 13 dígitos a começar por 0351 (ex.: 0351961958682) - Zero antes de 351
+      if (cleanedNumber.length() == 13 && cleanedNumber.startsWith('0351')) {
+        return cleanedNumber.substring(4); // remove '0351' → devolve 9 dígitos
+      }
+
+      // Caso 2c: 14 dígitos a começar por 00351 (ex.: 00351961958682) - Internacional com 00
+      if (cleanedNumber.length() == 14 && cleanedNumber.startsWith('00351')) {
+        return cleanedNumber.substring(5); // remove '00351' → devolve 9 dígitos
+      }
 
         // Case 3: 12 digits starting with 351 (351961958682) - International format without +
         if (cleanedNumber.length() == 12 && cleanedNumber.startsWith('351')) {
