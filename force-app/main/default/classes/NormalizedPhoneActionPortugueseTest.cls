@@ -1,36 +1,12 @@
 @IsTest
 public class NormalizedPhoneActionPortugueseTest {
-
-    @IsTest
-    static void testNormalizePhone_ValidNationalFormat() {
-        // Arrange
-        List<NormalizedPhoneActionPortuguese.Request> requests = new List<NormalizedPhoneActionPortuguese.Request>();
-        NormalizedPhoneActionPortuguese.Request request = new NormalizedPhoneActionPortuguese.Request();
-  request.inputPhone = '961958682';
-        requests.add(request);
-
-    // Act
-    List<NormalizedPhoneActionPortuguese.Response> responses = NormalizedPhoneActionPortuguese.normalizePhone(
-      requests
-    );
-
-    // Assert
-    System.assertEquals(1, responses.size(), 'Should return one response');
-    System.assertEquals(true, responses[0].isValid, 'Should be valid');
-    System.assertEquals(
-      '+351961958682',
-      responses[0].normalizedPhoneNumber,
-      'Should normalize to +351 format'
-    );
-  }
-
-    @IsTest
-    static void testNormalizePhone_ValidNationalFormatWithTrunk() {
-        // Arrange
-        List<NormalizedPhoneActionPortuguese.Request> requests = new List<NormalizedPhoneActionPortuguese.Request>();
-        NormalizedPhoneActionPortuguese.Request request = new NormalizedPhoneActionPortuguese.Request();
-  request.inputPhone = '0961958682';
-        requests.add(request);
+  @IsTest
+  static void testNormalizePhone_ValidNationalFormat() {
+    // Arrange
+    List<NormalizedPhoneActionPortuguese.Request> requests = new List<NormalizedPhoneActionPortuguese.Request>();
+    NormalizedPhoneActionPortuguese.Request request = new NormalizedPhoneActionPortuguese.Request();
+    request.inputPhone = '961958682';
+    requests.add(request);
 
     // Act
     List<NormalizedPhoneActionPortuguese.Response> responses = NormalizedPhoneActionPortuguese.normalizePhone(
@@ -47,13 +23,13 @@ public class NormalizedPhoneActionPortugueseTest {
     );
   }
 
-    @IsTest
-    static void testNormalizePhone_ValidInternationalFormat() {
-        // Arrange
-        List<NormalizedPhoneActionPortuguese.Request> requests = new List<NormalizedPhoneActionPortuguese.Request>();
-        NormalizedPhoneActionPortuguese.Request request = new NormalizedPhoneActionPortuguese.Request();
-  request.inputPhone = '351961958682';
-        requests.add(request);
+  @IsTest
+  static void testNormalizePhone_ValidNationalFormatWithTrunk() {
+    // Arrange
+    List<NormalizedPhoneActionPortuguese.Request> requests = new List<NormalizedPhoneActionPortuguese.Request>();
+    NormalizedPhoneActionPortuguese.Request request = new NormalizedPhoneActionPortuguese.Request();
+    request.inputPhone = '0961958682';
+    requests.add(request);
 
     // Act
     List<NormalizedPhoneActionPortuguese.Response> responses = NormalizedPhoneActionPortuguese.normalizePhone(
@@ -70,13 +46,13 @@ public class NormalizedPhoneActionPortugueseTest {
     );
   }
 
-    @IsTest
-    static void testNormalizePhone_ValidInternationalFormatWithPlus() {
-        // Arrange
-        List<NormalizedPhoneActionPortuguese.Request> requests = new List<NormalizedPhoneActionPortuguese.Request>();
-        NormalizedPhoneActionPortuguese.Request request = new NormalizedPhoneActionPortuguese.Request();
-  request.inputPhone = '+351961958682';
-        requests.add(request);
+  @IsTest
+  static void testNormalizePhone_ValidInternationalFormat() {
+    // Arrange
+    List<NormalizedPhoneActionPortuguese.Request> requests = new List<NormalizedPhoneActionPortuguese.Request>();
+    NormalizedPhoneActionPortuguese.Request request = new NormalizedPhoneActionPortuguese.Request();
+    request.inputPhone = '351961958682';
+    requests.add(request);
 
     // Act
     List<NormalizedPhoneActionPortuguese.Response> responses = NormalizedPhoneActionPortuguese.normalizePhone(
@@ -93,13 +69,36 @@ public class NormalizedPhoneActionPortugueseTest {
     );
   }
 
-    @IsTest
-    static void testNormalizePhone_ValidPhoneWithSpaces() {
-        // Arrange
-        List<NormalizedPhoneActionPortuguese.Request> requests = new List<NormalizedPhoneActionPortuguese.Request>();
-        NormalizedPhoneActionPortuguese.Request request = new NormalizedPhoneActionPortuguese.Request();
-  request.inputPhone = '+351 961 958 682';
-        requests.add(request);
+  @IsTest
+  static void testNormalizePhone_ValidInternationalFormatWithPlus() {
+    // Arrange
+    List<NormalizedPhoneActionPortuguese.Request> requests = new List<NormalizedPhoneActionPortuguese.Request>();
+    NormalizedPhoneActionPortuguese.Request request = new NormalizedPhoneActionPortuguese.Request();
+    request.inputPhone = '+351961958682';
+    requests.add(request);
+
+    // Act
+    List<NormalizedPhoneActionPortuguese.Response> responses = NormalizedPhoneActionPortuguese.normalizePhone(
+      requests
+    );
+
+    // Assert
+    System.assertEquals(1, responses.size(), 'Should return one response');
+    System.assertEquals(true, responses[0].isValid, 'Should be valid');
+    System.assertEquals(
+      '+351961958682',
+      responses[0].normalizedPhoneNumber,
+      'Should normalize to +351 format'
+    );
+  }
+
+  @IsTest
+  static void testNormalizePhone_ValidPhoneWithSpaces() {
+    // Arrange
+    List<NormalizedPhoneActionPortuguese.Request> requests = new List<NormalizedPhoneActionPortuguese.Request>();
+    NormalizedPhoneActionPortuguese.Request request = new NormalizedPhoneActionPortuguese.Request();
+    request.inputPhone = '+351 961 958 682';
+    requests.add(request);
 
     // Act
     List<NormalizedPhoneActionPortuguese.Response> responses = NormalizedPhoneActionPortuguese.normalizePhone(
@@ -121,12 +120,12 @@ public class NormalizedPhoneActionPortugueseTest {
     // Test all valid Portuguese mobile prefixes
     List<String> validPrefixes = new List<String>{ '91', '92', '93', '96' };
 
-        for (String prefix : validPrefixes) {
-            // Arrange
-            List<NormalizedPhoneActionPortuguese.Request> requests = new List<NormalizedPhoneActionPortuguese.Request>();
-            NormalizedPhoneActionPortuguese.Request request = new NormalizedPhoneActionPortuguese.Request();
-            request.inputPhone = prefix + '1234567';
-            requests.add(request);
+    for (String prefix : validPrefixes) {
+      // Arrange
+      List<NormalizedPhoneActionPortuguese.Request> requests = new List<NormalizedPhoneActionPortuguese.Request>();
+      NormalizedPhoneActionPortuguese.Request request = new NormalizedPhoneActionPortuguese.Request();
+      request.inputPhone = prefix + '1234567';
+      requests.add(request);
 
       // Act
       List<NormalizedPhoneActionPortuguese.Response> responses = NormalizedPhoneActionPortuguese.normalizePhone(
@@ -157,16 +156,22 @@ public class NormalizedPhoneActionPortugueseTest {
     // Arrange
     List<NormalizedPhoneActionPortuguese.Request> requests = new List<NormalizedPhoneActionPortuguese.Request>();
     NormalizedPhoneActionPortuguese.Request request = new NormalizedPhoneActionPortuguese.Request();
-  request.inputPhone = '0351961958682';
+    request.inputPhone = '0351961958682';
     requests.add(request);
 
     // Act
-    List<NormalizedPhoneActionPortuguese.Response> responses = NormalizedPhoneActionPortuguese.normalizePhone(requests);
+    List<NormalizedPhoneActionPortuguese.Response> responses = NormalizedPhoneActionPortuguese.normalizePhone(
+      requests
+    );
 
     // Assert
     System.assertEquals(1, responses.size(), 'Should return one response');
     System.assertEquals(true, responses[0].isValid, 'Should be valid');
-    System.assertEquals('+351961958682', responses[0].normalizedPhoneNumber, 'Should normalize to +351 format');
+    System.assertEquals(
+      '+351961958682',
+      responses[0].normalizedPhoneNumber,
+      'Should normalize to +351 format'
+    );
   }
 
   @IsTest
@@ -174,25 +179,31 @@ public class NormalizedPhoneActionPortugueseTest {
     // Arrange
     List<NormalizedPhoneActionPortuguese.Request> requests = new List<NormalizedPhoneActionPortuguese.Request>();
     NormalizedPhoneActionPortuguese.Request request = new NormalizedPhoneActionPortuguese.Request();
-  request.inputPhone = '00351961958682';
+    request.inputPhone = '00351961958682';
     requests.add(request);
 
     // Act
-    List<NormalizedPhoneActionPortuguese.Response> responses = NormalizedPhoneActionPortuguese.normalizePhone(requests);
+    List<NormalizedPhoneActionPortuguese.Response> responses = NormalizedPhoneActionPortuguese.normalizePhone(
+      requests
+    );
 
     // Assert
     System.assertEquals(1, responses.size(), 'Should return one response');
     System.assertEquals(true, responses[0].isValid, 'Should be valid');
-    System.assertEquals('+351961958682', responses[0].normalizedPhoneNumber, 'Should normalize to +351 format');
+    System.assertEquals(
+      '+351961958682',
+      responses[0].normalizedPhoneNumber,
+      'Should normalize to +351 format'
+    );
   }
 
-    @IsTest
-    static void testNormalizePhone_InvalidPrefix() {
-        // Arrange
-        List<NormalizedPhoneActionPortuguese.Request> requests = new List<NormalizedPhoneActionPortuguese.Request>();
-        NormalizedPhoneActionPortuguese.Request request = new NormalizedPhoneActionPortuguese.Request();
-  request.inputPhone = '981234567'; // Invalid prefix 98
-        requests.add(request);
+  @IsTest
+  static void testNormalizePhone_InvalidPrefix() {
+    // Arrange
+    List<NormalizedPhoneActionPortuguese.Request> requests = new List<NormalizedPhoneActionPortuguese.Request>();
+    NormalizedPhoneActionPortuguese.Request request = new NormalizedPhoneActionPortuguese.Request();
+    request.inputPhone = '981234567'; // Invalid prefix 98
+    requests.add(request);
 
     // Act
     List<NormalizedPhoneActionPortuguese.Response> responses = NormalizedPhoneActionPortuguese.normalizePhone(
@@ -209,13 +220,13 @@ public class NormalizedPhoneActionPortugueseTest {
     );
   }
 
-    @IsTest
-    static void testNormalizePhone_InvalidLength() {
-        // Arrange
-        List<NormalizedPhoneActionPortuguese.Request> requests = new List<NormalizedPhoneActionPortuguese.Request>();
-        NormalizedPhoneActionPortuguese.Request request = new NormalizedPhoneActionPortuguese.Request();
-  request.inputPhone = '96195868'; // Too short
-        requests.add(request);
+  @IsTest
+  static void testNormalizePhone_InvalidLength() {
+    // Arrange
+    List<NormalizedPhoneActionPortuguese.Request> requests = new List<NormalizedPhoneActionPortuguese.Request>();
+    NormalizedPhoneActionPortuguese.Request request = new NormalizedPhoneActionPortuguese.Request();
+    request.inputPhone = '96195868'; // Too short
+    requests.add(request);
 
     // Act
     List<NormalizedPhoneActionPortuguese.Response> responses = NormalizedPhoneActionPortuguese.normalizePhone(
@@ -232,13 +243,13 @@ public class NormalizedPhoneActionPortugueseTest {
     );
   }
 
-    @IsTest
-    static void testNormalizePhone_EmptyInput() {
-        // Arrange
-        List<NormalizedPhoneActionPortuguese.Request> requests = new List<NormalizedPhoneActionPortuguese.Request>();
-        NormalizedPhoneActionPortuguese.Request request = new NormalizedPhoneActionPortuguese.Request();
-  request.inputPhone = '';
-        requests.add(request);
+  @IsTest
+  static void testNormalizePhone_EmptyInput() {
+    // Arrange
+    List<NormalizedPhoneActionPortuguese.Request> requests = new List<NormalizedPhoneActionPortuguese.Request>();
+    NormalizedPhoneActionPortuguese.Request request = new NormalizedPhoneActionPortuguese.Request();
+    request.inputPhone = '';
+    requests.add(request);
 
     // Act
     List<NormalizedPhoneActionPortuguese.Response> responses = NormalizedPhoneActionPortuguese.normalizePhone(
@@ -255,13 +266,13 @@ public class NormalizedPhoneActionPortugueseTest {
     );
   }
 
-    @IsTest
-    static void testNormalizePhone_NullInput() {
-        // Arrange
-        List<NormalizedPhoneActionPortuguese.Request> requests = new List<NormalizedPhoneActionPortuguese.Request>();
-        NormalizedPhoneActionPortuguese.Request request = new NormalizedPhoneActionPortuguese.Request();
-  request.inputPhone = null;
-        requests.add(request);
+  @IsTest
+  static void testNormalizePhone_NullInput() {
+    // Arrange
+    List<NormalizedPhoneActionPortuguese.Request> requests = new List<NormalizedPhoneActionPortuguese.Request>();
+    NormalizedPhoneActionPortuguese.Request request = new NormalizedPhoneActionPortuguese.Request();
+    request.inputPhone = null;
+    requests.add(request);
 
     // Act
     List<NormalizedPhoneActionPortuguese.Response> responses = NormalizedPhoneActionPortuguese.normalizePhone(
@@ -294,17 +305,17 @@ public class NormalizedPhoneActionPortugueseTest {
     // Arrange
     List<NormalizedPhoneActionPortuguese.Request> requests = new List<NormalizedPhoneActionPortuguese.Request>();
 
-        NormalizedPhoneActionPortuguese.Request request1 = new NormalizedPhoneActionPortuguese.Request();
-  request1.inputPhone = '961958682';
-        requests.add(request1);
+    NormalizedPhoneActionPortuguese.Request request1 = new NormalizedPhoneActionPortuguese.Request();
+    request1.inputPhone = '961958682';
+    requests.add(request1);
 
-        NormalizedPhoneActionPortuguese.Request request2 = new NormalizedPhoneActionPortuguese.Request();
-  request2.inputPhone = '+351929876543';
-        requests.add(request2);
+    NormalizedPhoneActionPortuguese.Request request2 = new NormalizedPhoneActionPortuguese.Request();
+    request2.inputPhone = '+351929876543';
+    requests.add(request2);
 
-        NormalizedPhoneActionPortuguese.Request request3 = new NormalizedPhoneActionPortuguese.Request();
-  request3.inputPhone = 'invalid';
-        requests.add(request3);
+    NormalizedPhoneActionPortuguese.Request request3 = new NormalizedPhoneActionPortuguese.Request();
+    request3.inputPhone = 'invalid';
+    requests.add(request3);
 
     // Act
     List<NormalizedPhoneActionPortuguese.Response> responses = NormalizedPhoneActionPortuguese.normalizePhone(
