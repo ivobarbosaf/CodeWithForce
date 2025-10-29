@@ -81,3 +81,7 @@ sf apex run test --tests MyTestClass
 - [Salesforce CLI Reference](https://developer.salesforce.com/docs/atlas.en-us.sfdx_cli_reference.meta/sfdx_cli_reference/)
 - [Apex Developer Guide](https://developer.salesforce.com/docs/atlas.en-us.apexcode.meta/apexcode/)
 - [Lightning Web Components Guide](https://developer.salesforce.com/docs/component-library/documentation/en/lwc)
+
+## Documentação Adicional
+
+- [Instalação do Salesforce MCP Server](docs/SALESFORCE_MCP_SERVER_INSTALACAO.md) - Guia para integração de agentes de IA com Salesforce
