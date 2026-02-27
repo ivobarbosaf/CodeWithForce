@@ -75,6 +75,23 @@ sf apex run test --tests MyTestClass
 3. **Fazer Alterações**: Edite os componentes existentes ou crie novos
 4. **Deploy das Alterações**: Use `sf project deploy start` para enviar suas mudanças
 
+## Configuração do Terminal
+
+Para que os ícones do prompt **Powerlevel10k** sejam exibidos corretamente, é necessário instalar a fonte **MesloLGS NF** e configurar o Terminal ou iTerm2 para usá-la.
+
+Consulte o guia completo: [docs/NERD_FONTS_SETUP.md](docs/NERD_FONTS_SETUP.md)
+
+**Resumo rápido:**
+
+```bash
+# Instalar via Homebrew
+brew install --cask font-meslo-lg-nerd-font
+```
+
+Após instalar a fonte, selecione **MesloLGS NF** nas preferências do Terminal/iTerm2 e execute `p10k configure` escolhendo **Unicode** e **Many icons**.
+
+> Se você vê `?` no lugar dos ícones, consulte a seção de [Troubleshooting](docs/NERD_FONTS_SETUP.md) no guia.
+
 ## Recursos Úteis
 
 - [Salesforce Extensions for VS Code](https://forcedotcom.github.io/salesforcedx-vscode/)
